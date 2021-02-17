@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
 import '../widgets/products_grid.dart';
 
-enum FilterOptions {
-  Favorites,
-  All
-}
+enum FilterOptions { Favorites, All }
 
 class ProductsOverviewScreen extends StatefulWidget {
   @override
@@ -22,11 +19,13 @@ class _ProductsOverviewScreenState extends State<ProductsOverviewScreen> {
         actions: [
           PopupMenuButton(
             onSelected: (FilterOptions selectedValue) {
-              if (selectedValue == FilterOptions.Favorites) {
-                _showOnlyFavorites = true;
-              } else {
-                _showOnlyFavorites = false;
-              }
+              setState(() {
+                if (selectedValue == FilterOptions.Favorites) {
+                  _showOnlyFavorites = true;
+                } else {
+                  _showOnlyFavorites = false;
+                }
+              });
             },
             itemBuilder: (_) => [
               PopupMenuItem(
